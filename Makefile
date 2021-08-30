@@ -71,6 +71,8 @@ dist:
 	rm build/diff/bin/diff
 	GOOS=windows GOARCH=amd64 go build -o build/diff/bin/diff.exe -trimpath -ldflags="$(LDFLAGS)"
 	tar -C build/ -zcvf $(CURDIR)/release/helm-diff-windows.tgz diff/
+	GOOS=linux GOARCH=arm64 go build -o build/diff/bin/diff.exe -trimpath -ldflags="$(LDFLAGS)"
+	tar -C build/ -zcvf $(CURDIR)/release/helm-diff-linux-arm64.tgz diff/
 
 .PHONY: release
 release: lint dist
